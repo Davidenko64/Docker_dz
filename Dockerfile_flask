@@ -1,0 +1,15 @@
+FROM python:latest
+
+WORKDIR /temp
+
+COPY play.py .
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        pip
+
+RUN python3 -m pip install --upgrade pip \
+        pip install flask
+
+CMD ["python", "play.py"]
+
+EXPOSE 80
